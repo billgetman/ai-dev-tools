@@ -1,0 +1,137 @@
+[
+  {
+    "id": "bueller_001",
+    "audio_url": "https://static.deepgram.com/examples/Bueller-Life-moves-pretty-fast.wav",
+    "transcript": "Yeah. Life moves pretty fast. If you don't stop and look around once in a while, you could miss it.",
+    "duration_seconds": 6.5,
+    "speaker": "Ferris Bueller",
+    "difficulty": "easy",
+    "expected_wer": 0.02
+  },
+  {
+    "id": "nasa_001",
+    "audio_url": "https://static.deepgram.com/examples/nasa-spacewalk-interview.wav",
+    "transcript": "The crew of the International Space Station is preparing for a spacewalk to repair a faulty antenna.",
+    "duration_seconds": 8.3,
+    "speaker": "NASA Announcer",
+    "difficulty": "medium",
+    "expected_wer": 0.05
+  },
+  {
+    "id": "interview_001",
+    "audio_url": "https://static.deepgram.com/examples/interview_speech-analytics.wav",
+    "transcript": "I think that's a really interesting question and there are multiple ways to approach it.",
+    "duration_seconds": 5.2,
+    "speaker": "Interviewee",
+    "difficulty": "medium",
+    "expected_wer": 0.04
+  },
+  {
+    "id": "customer_001",
+    "audio_url": "https://static.deepgram.com/examples/customer-service-call.wav",
+    "transcript": "Thank you for calling customer support. How may I help you today?",
+    "duration_seconds": 4.1,
+    "speaker": "Support Agent",
+    "difficulty": "easy",
+    "expected_wer": 0.01
+  },
+  {
+    "id": "meeting_001",
+    "audio_url": "https://static.deepgram.com/examples/team-meeting-discussion.wav",
+    "transcript": "Let's go over the quarterly results and discuss our strategy for next quarter.",
+    "duration_seconds": 7.8,
+    "speaker": "Manager",
+    "difficulty": "medium",
+    "expected_wer": 0.06
+  },
+  {
+    "id": "podcast_001",
+    "audio_url": "https://static.deepgram.com/examples/podcast-episode-excerpt.wav",
+    "transcript": "Welcome back to the show. Today we're talking about artificial intelligence and its impact on society.",
+    "duration_seconds": 9.2,
+    "speaker": "Podcast Host",
+    "difficulty": "easy",
+    "expected_wer": 0.03
+  },
+  {
+    "id": "lecture_001",
+    "audio_url": "https://static.deepgram.com/examples/university-lecture-sample.wav",
+    "transcript": "The fundamental theorem of calculus establishes the relationship between differentiation and integration.",
+    "duration_seconds": 8.7,
+    "speaker": "Professor",
+    "difficulty": "hard",
+    "expected_wer": 0.08
+  },
+  {
+    "id": "news_001",
+    "audio_url": "https://static.deepgram.com/examples/news-broadcast-clip.wav",
+    "transcript": "Breaking news tonight: Scientists have discovered a new exoplanet that may be capable of supporting life.",
+    "duration_seconds": 6.9,
+    "speaker": "News Anchor",
+    "difficulty": "medium",
+    "expected_wer": 0.04
+  },
+  {
+    "id": "medical_001",
+    "audio_url": "https://static.deepgram.com/examples/medical-dictation.wav",
+    "transcript": "Patient presents with symptoms including elevated temperature, persistent cough, and general fatigue.",
+    "duration_seconds": 7.3,
+    "speaker": "Doctor",
+    "difficulty": "hard",
+    "expected_wer": 0.09
+  },
+  {
+    "id": "earnings_001",
+    "audio_url": "https://static.deepgram.com/examples/earnings-call-excerpt.wav",
+    "transcript": "Our revenue for the quarter exceeded expectations, growing by twenty-three percent year over year.",
+    "duration_seconds": 8.1,
+    "speaker": "CEO",
+    "difficulty": "medium",
+    "expected_wer": 0.05
+  },
+  {
+    "id": "voicemail_001",
+    "audio_url": "https://static.deepgram.com/examples/voicemail-message.wav",
+    "transcript": "Hi, this is John calling about tomorrow's meeting. Please call me back when you get a chance.",
+    "duration_seconds": 5.5,
+    "speaker": "John",
+    "difficulty": "easy",
+    "expected_wer": 0.02
+  },
+  {
+    "id": "weather_001",
+    "audio_url": "https://static.deepgram.com/examples/weather-forecast.wav",
+    "transcript": "Today's forecast calls for partly cloudy skies with a high of seventy-five degrees.",
+    "duration_seconds": 4.8,
+    "speaker": "Meteorologist",
+    "difficulty": "easy",
+    "expected_wer": 0.03
+  },
+  {
+    "id": "restaurant_001",
+    "audio_url": "https://static.deepgram.com/examples/restaurant-order.wav",
+    "transcript": "I'll have the grilled salmon with a side of roasted vegetables and a glass of white wine, please.",
+    "duration_seconds": 6.2,
+    "speaker": "Customer",
+    "difficulty": "medium",
+    "expected_wer": 0.06
+  },
+  {
+    "id": "tech_support_001",
+    "audio_url": "https://static.deepgram.com/examples/tech-support-call.wav",
+    "transcript": "Have you tried turning it off and on again? That usually resolves most connectivity issues.",
+    "duration_seconds": 5.9,
+    "speaker": "Tech Support",
+    "difficulty": "easy",
+    "expected_wer": 0.02
+  },
+  {
+    "id": "legal_001",
+    "audio_url": "https://static.deepgram.com/examples/legal-deposition.wav",
+    "transcript": "The defendant was present at the location on the night in question, according to multiple witnesses.",
+    "duration_seconds": 7.6,
+    "speaker": "Attorney",
+    "difficulty": "hard",
+    "expected_wer": 0.07
+  }
+]

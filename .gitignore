@@ -1,0 +1,70 @@
+# OS Files
+.DS_Store
+Thumbs.db
+.Trash-*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Claude
+.claude/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.Python
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
+
+# Rust
+target/
+Cargo.lock
+**/*.rs.bk
+*.pdb
+
+# Elm
+elm-stuff/
+elm.js
+repl-temp-*
+
+# Node (for Elm tools)
+node_modules/
+npm-debug.log*
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Audio files (large)
+*.wav
+*.mp3
+*.flac
+*.ogg
+
+# Output/results
+results/
+output/
+*.csv
+*.pkl
+comparison.html
+results_final*
+results_visualization.png
+
+# Benchmark outputs
+monitoring.db
