@@ -50,10 +50,3 @@ See [SETUP.md](./SETUP.md) for installation.
 ## Key Message
 
 Safe Rust code can be as fast as unsafe code. AI tools help navigate Rust's complexity while maintaining correctness and performance.
-
-## Presenter Notes
-
-See [PRESENTER_GUIDE.md](./PRESENTER_GUIDE.md) for:
-- Phase-by-phase progression with timing
-- How to run and interpret benchmarks
-- Common Rust pitfalls (borrow checker, Send/Sync) and recovery

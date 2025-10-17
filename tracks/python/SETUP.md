@@ -89,5 +89,3 @@ tracks/python/
 ## Create Brownfield Starting Code
 
 Before demo, create `benchmark_nightmare.py` with the terrible code described in `brownfield/python_brownfield.md`. This is the 1000-line mess participants will refactor.
-
-See PRESENTER_GUIDE.md for details.

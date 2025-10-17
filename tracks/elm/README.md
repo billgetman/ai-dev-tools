@@ -48,13 +48,50 @@ See [SETUP.md](./SETUP.md) for installation.
 - Search/filter/comparison features work smoothly
 - WebSocket integration via Ports works correctly
 
+## Performance Notes
+
+### The Problem with Lists
+
+The brownfield code uses `List` for everything, causing major performance issues:
+
+```elm
+-- Current code (O(n) for every lookup):
+getResultById : String -> List TranscriptionResult -> Maybe TranscriptionResult
+getResultById id results =
+    List.filter (\r -> r.id == id) results |> List.head
+
+-- With Dict (O(log n)):
+getResultById : String -> Dict String TranscriptionResult -> Maybe TranscriptionResult
+getResultById id results =
+    Dict.get id results
+```
+
+### Why 7 Copies of the Same Data?
+
+The Model has:
+- `results` - Original data
+- `resultsFiltered` - After search (can be computed)
+- `resultsSorted` - After sort (can be computed)
+- `resultsBackup` - Copy of original (why?)
+- `resultsFinal` - Another copy
+- `resultsTemp` - Temporary copy
+- `resultsCache` - Yet another copy
+
+This should just be:
+- `results : Dict String TranscriptionResult` - The data
+- `searchQuery : String` - Current search
+- `sortField : SortField` - Current sort
+
+Everything else is derived: `results |> applySearch searchQuery |> applySort sortField`
+
+### Performance Impact
+
+With 10 results: ~1ms updates (invisible)
+With 100 results: ~20ms updates (noticeable lag)
+With 1000 results: ~200ms updates (painful)
+
+Test with `data/large_dataset.json` to see the difference.
+
 ## Key Message
 
 No runtime exceptions + refactoring confidence. If it compiles, it works.
-
-## Presenter Notes
-
-See [PRESENTER_GUIDE.md](./PRESENTER_GUIDE.md) for:
-- Phase-by-phase progression with timing
-- How to demonstrate "impossible states made impossible"
-- Common Elm patterns and pitfalls
