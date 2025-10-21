@@ -57,6 +57,7 @@ Check the assembly with `cargo asm` - the safe version is identical or better.
 - `interleave_channels_unsafe` - chunks and iterators
 - `deinterleave_channels_unsafe` - chunks_exact
 - `apply_lowpass_unsafe` - fold or scan
+- `apply_biquad_unsafe` - compute-intensive, good SIMD candidate
 - `normalize_unsafe` - find max, then scale
 - `compute_rms_unsafe` - iterator sum
 - `clip_buffer_unsafe` - clamp method
@@ -75,8 +76,10 @@ Check the assembly with `cargo asm` - the safe version is identical or better.
 ## Hints
 
 - Start with the trivial ones: `apply_gain`, `clip_buffer`, `compute_rms`
-- For SIMD: `f32x8::splat(gain) * f32x8::from_slice(chunk)`
-- The interleave/deinterleave functions are where SIMD really shines
+- Safe iterators often compile to same assembly as unsafe pointer arithmetic
+- SIMD helps most with interleave/deinterleave and complex filters
+- Simple ops like gain/mix are memory-bandwidth limited (20-50% speedup typical)
+- For SIMD: `chunks_exact_mut` for alignment, `f32x8` for operations
 - `copy_buffer_unsafe` and `clear_buffer_unsafe` already use the right primitives
 
 ---

@@ -55,7 +55,7 @@ ai_tools_dev_track/
 ### Rust Track
 - **Problem**: Unnecessary unsafe code, no SIMD, hardcoded types
 - **Solution**: Safe abstractions, SIMD optimization, generics
-- **Performance**: Same speed with safety, 4-8x with SIMD
+- **Performance**: Safe matches unsafe, 20-50% SIMD gain (memory-bound reality)
 
 ### Elm Track
 - **Problem**: 60+ field Model, List O(n) operations, redundant state

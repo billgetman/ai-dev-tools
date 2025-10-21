@@ -188,6 +188,55 @@ pub fn clip_buffer_unsafe(buffer: &mut [f32]) {
     }
 }
 
+/// Apply biquad filter - compute-intensive operation good for SIMD
+/// This is where SIMD can actually provide significant speedup (2-4x)
+/// because it's compute-bound, not memory-bound.
+/// Formula: y[n] = b0*x[n] + b1*x[n-1] + b2*x[n-2] - a1*y[n-1] - a2*y[n-2]
+pub fn apply_biquad_unsafe(
+    buffer: &mut [f32],
+    coeffs: &[f32; 5], // [b0, b1, b2, a1, a2]
+    state: &mut [f32; 4], // [x1, x2, y1, y2] previous samples
+) {
+    unsafe {
+        let ptr = buffer.as_mut_ptr();
+        let len = buffer.len();
+
+        // Extract coefficients
+        let b0 = coeffs[0];
+        let b1 = coeffs[1];
+        let b2 = coeffs[2];
+        let a1 = coeffs[3];
+        let a2 = coeffs[4];
+
+        // Extract state
+        let mut x1 = state[0];
+        let mut x2 = state[1];
+        let mut y1 = state[2];
+        let mut y2 = state[3];
+
+        for i in 0..len {
+            let x0 = *ptr.offset(i as isize);
+
+            // This is compute-intensive: 5 multiplies + 4 adds per sample
+            let y0 = b0 * x0 + b1 * x1 + b2 * x2 - a1 * y1 - a2 * y2;
+
+            *ptr.offset(i as isize) = y0;
+
+            // Update state
+            x2 = x1;
+            x1 = x0;
+            y2 = y1;
+            y1 = y0;
+        }
+
+        // Save state
+        state[0] = x1;
+        state[1] = x2;
+        state[2] = y1;
+        state[3] = y2;
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -217,5 +266,19 @@ mod tests {
         assert!((output[1] + 0.5).abs() < 0.01);
         assert!((output[2] - 1.0).abs() < 0.01);
         assert!((output[3] + 1.0).abs() < 0.01);
+    }
+
+    #[test]
+    fn test_apply_biquad_unsafe() {
+        // Simple lowpass biquad coefficients
+        let coeffs = [0.1, 0.2, 0.1, -0.5, 0.2];  // b0, b1, b2, a1, a2
+        let mut state = [0.0, 0.0, 0.0, 0.0];  // x1, x2, y1, y2
+        let mut buffer = vec![1.0, 0.5, -0.5, 0.0, 0.25];
+
+        apply_biquad_unsafe(&mut buffer, &coeffs, &mut state);
+
+        // Just verify it modifies the buffer and doesn't crash
+        assert_ne!(buffer[0], 1.0);
+        assert!(buffer.iter().all(|&x| x.is_finite()));
     }
 }

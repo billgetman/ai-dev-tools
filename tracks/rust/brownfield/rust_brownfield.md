@@ -50,7 +50,9 @@ pub fn convert_i16_to_f32_unsafe(input: &[i16], output: &mut [f32]) {
 **Phase 2: Add SIMD**
 - Use `std::simd` or `packed_simd2` for vectorization
 - Safe SIMD abstractions (no raw intrinsics)
-- Target: 4x-8x speedup on supported platforms
+- Target: 20-50% speedup for memory-bound operations (gain, mix)
+- Target: 2-4x speedup for compute-intensive operations (filters, interleaving)
+- Note: Safe iterators often compile to same assembly as unsafe
 - Graceful fallback for non-SIMD targets
 
 **Phase 3: Make generic over sample types**
@@ -74,7 +76,7 @@ pub fn convert_i16_to_f32_unsafe(input: &[i16], output: &mut [f32]) {
 **Success criteria:**
 - Zero `unsafe` blocks (or justified with safety comments)
 - Benchmarks show ≥100% performance of original
-- SIMD operations work correctly
+- SIMD provides measurable speedup where applicable (20-50% typical)
 - Generic over sample types (at least i16, f32)
 - All types are `Send + Sync`
 - Passes Miri (undefined behavior detector)

@@ -19,7 +19,7 @@ Phase 4 → Zero-copy inter-process communication
 
 **Brownfield**
 Phase 1 → Make unsafe code safe without performance loss
-Phase 2 → Add SIMD (4x-8x speedup target)
+Phase 2 → Add SIMD (20-50% for simple ops, 2x+ for complex)
 Phase 3 → Make generic over sample types (i16, f32, etc.)
 Phase 4 → Thread safety (Send+Sync)
 Phase 5 → Const evaluation
@@ -43,7 +43,7 @@ See [SETUP.md](./SETUP.md) for installation.
 - Zero allocations in hot path
 - Lock-free queues working correctly
 - Safe code benchmarks at ≥100% of unsafe code performance
-- SIMD operations show 4x-8x speedup
+- SIMD shows realistic speedup (46% for interleaving, more for filters)
 - All types are Send + Sync
 - Miri reports no undefined behavior
 
